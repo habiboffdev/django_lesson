@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Products</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      .product {
+        display: inline-block;
+        width: 25%;
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .product img {
+        width: 100%;
+      }
+      .product h2 {
+        font-size: 16px;
+        margin-top: 0;
+      }
+      .product p {
+        font-size: 14px;
+        color: #666;
+      }
+      .product .price {
+        font-size: 18px;
+        font-weight: bold;
+        color: #337ab7;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello, {{ variable | random }}</h1>
+    {% comment %}       <h1>Salom</h1> {% endcomment %}
+    <h1>Products</h1>
+    {% for product in all_products %}
+    <div class="product">
+      <img src="https://www.montblanc.com/variants/images/1647597318123194/A/w2500.jpg" alt="Product Image">
+      <h2>{{ product.name }}</h2>
+      <p>{{ product.description }}</p>
+      <p class="price">${{ product.price }}</p>
+      {% if not product.is_active%}
+      <p style="color:red">Not Available</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </body>
+</html>
